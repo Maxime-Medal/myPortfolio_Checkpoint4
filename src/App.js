@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+// import { Routes, Route } from "react-router-dom";
+import Footer from "./components/Footer.jsx";
+import Home from "./pages/Home";
+import GlobalStyle from "./components/style/GlobalStyle";
+import ReturnHome from "./components/ReturnHome";
 
 function App() {
+  const [pictures, setPictures] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5500/api/pictures")
+      .then((res) => setPictures(res.data))
+      .catch((err) => console.log(err));
+  }, []);
+  console.log("pict");
+  console.log(pictures);
+  console.log("ture");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+      <ReturnHome />
+      <h1>Accueil</h1>
+      <Home pictures={pictures} />
+      {/* <Routes> */}
+      {/* <Route path="/pictures/:id" element={} /> */}
+      {/* </Routes> */}
+      <Footer />
+    </>
   );
 }
 

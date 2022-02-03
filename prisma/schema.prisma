@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// first with name and table of database  -->  npx prisma migrate dev --name init  <--
+
+generator client {
+  // binaryTargets = ["native"],
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Categories {
+  id       Int        @id @default(autoincrement())
+  name     String
+  pictures Pictures[]
+}
+
+model Materials {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String?
+  accessories Json?
+  pictures    Pictures[]
+}
+
+model Pictures {
+  id           Int         @id @default(autoincrement())
+  title        String
+  link         String
+  details      String?     @db.LongText
+  shoot_date   DateTime?   @default(now())
+  categoriesId Int?
+  materialsId  Int?
+  categories   Categories? @relation(fields: [categoriesId], references: [id])
+  materials    Materials?  @relation(fields: [materialsId], references: [id])
+}
