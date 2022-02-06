@@ -1,34 +1,24 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
 
-// import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home";
 import GlobalStyle from "./components/style/GlobalStyle";
 import ReturnHome from "./components/ReturnHome";
+import PictureDetail from "./pages/PictureDetail.js";
 
 function App() {
-  const [pictures, setPictures] = useState([]);
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5500/api/pictures")
-      .then((res) => setPictures(res.data))
-      .catch((err) => console.log(err));
-  }, []);
-  console.log("pict");
-  console.log(pictures);
-  console.log("ture");
 
   return (
     <>
       <GlobalStyle />
-      <ReturnHome />
-      <h1>Accueil</h1>
-      <Home pictures={pictures} />
-      {/* <Routes> */}
-      {/* <Route path="/pictures/:id" element={} /> */}
-      {/* </Routes> */}
+      {/* <ReturnHome /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/pictures/:id" element={<PictureDetail />} />
+      </Routes>
       <Footer />
     </>
   );

@@ -5,6 +5,10 @@ const GlobalStyle = createGlobalStyle`
   text-align: center;
   color: blue;
   background-color: aliceblue;
+
+  li{
+    list-style: none;
+  }
 }
 
 `;

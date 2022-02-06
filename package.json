@@ -24,7 +24,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:server": "nodemon src/BackEnd/app.js",
-    "lint": "eslint --fix .",
     "db:reset": "prisma migrate reset",
     "db:seed": "prisma db seed"
   },
@@ -50,15 +49,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0",
     "dotenv": "^15.0.0",
-    "eslint": "^8.8.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.1",
     "prisma": "^3.9.0"
   }
 }

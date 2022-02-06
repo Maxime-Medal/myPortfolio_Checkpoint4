@@ -126,6 +126,14 @@ async function main() {
       categoriesId: 3,
       materialsId: 1,
     },
+    {
+      title: "Alienòr au soleil couchant",
+      link: "/pictures/soleil_couchant-8129.jpg",
+      details: "Un balade, un reflex et un magnifique soleil couchant",
+      shoot_date: new Date('2022-01-01'),
+      categoriesId: 3,
+      materialsId: 1,
+    },
     ]
   })
 
