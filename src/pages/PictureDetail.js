@@ -15,12 +15,21 @@ const PictureDetail = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  if (!onePicture) {
+    return null
+  }
+
   return (
     <Container>
       <OnePict>
         <img src={`http://localhost:5500/${onePicture.link}`} alt={onePicture.title} />
       </OnePict>
       <h3>{onePicture.title}</h3>
+      <ul>
+        <li>{onePicture.details} </li>
+      </ul>
+      {/* <h4>Materiel utilisé :</h4>
+      <p>  {onePicture.materials.name} </p> */}
     </Container>
 
   );
@@ -35,6 +44,9 @@ const Container = styled.div`
 
 const OnePict = styled(Pict)`
   width: 95%;
+  height: 88vh;
+  margin-top: 2em;
+  
 `
 
 export default PictureDetail;

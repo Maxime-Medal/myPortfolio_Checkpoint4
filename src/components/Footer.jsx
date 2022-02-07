@@ -12,7 +12,11 @@ function Footer() {
             {" "}
             <img src={faceBookLogo} alt="facebook" />
           </a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+          <a
+            href="https://www.instagram.com/maxime_medal/"
+            target="_blank"
+            rel="noreferrer"
+          >
             {" "}
             <img src={instaLogo} alt="instagram" />
           </a>
@@ -38,7 +42,7 @@ const Navbar = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* margin-top: 3rem; */
+  padding-top: 5rem;
 
   .logoList {
     display: flex;

@@ -46,7 +46,7 @@ picturesRouter.get('/pictures/:id', async (req, res) => {
 
 picturesRouter.post('/pictures', async (req, res) => {
   const info = req.body;
-  pictures
+  await pictures
     .create({ data: { ...info } })
     .then((createdPicture) => {
       res.status(201).json(createdPicture);
@@ -60,7 +60,7 @@ picturesRouter.post('/pictures', async (req, res) => {
 picturesRouter.put('/pictures/:id', async (req, res) => {
   const { id } = req.params;
   const updatedInfo = req.body;
-  pictures.findUnique({ where: { id: parseInt(id, 10) } }).then((pict) => {
+  await pictures.findUnique({ where: { id: parseInt(id, 10) } }).then((pict) => {
     if (pict) {
       pictures
         .update({ data: { ...updatedInfo }, where: { id: parseInt(id, 10) } })
@@ -76,5 +76,18 @@ picturesRouter.put('/pictures/:id', async (req, res) => {
     }
   })
 });
+
+picturesRouter.delete("/pictures/:id", async (req, res) => {
+  const { id } = req.params;
+  await pictures
+    .delete({ where: { id: Number(id) } })
+    .then(() => {
+      res.status(202).send(`element with id: ${id} is deleted!`);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send("Error deleting the picture");
+    });
+})
 
 module.exports = picturesRouter;
